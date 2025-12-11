@@ -120,7 +120,7 @@ def xml2yaml(xml_file:str, resources:dict[str,Any],output_dir:str, subdir:str|No
 
 def main():
     parser = argparse.ArgumentParser(exit_on_error=True)
-    parser.add_argument('-j', '--trimmed_json', required=True, help='specify the trimmed json config file stored in the terraform provider folder')
+    parser.add_argument('-j', '--trimmed_json', required=True, help='specify the trimmed json config file stored in the ansible folder')
     parser.add_argument('-x', '--xml-config', required=True, nargs="+", help='specify one or more XML config files to create .tf files for')
     parser.add_argument('-d', '--directory', required=True, help='specify the directory to write out hosts and host_vars/*.yaml files to')
 

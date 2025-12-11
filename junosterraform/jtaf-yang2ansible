@@ -43,7 +43,7 @@ pyang_args = [
 p1 = subprocess.Popen(pyang_args, stdout=subprocess.PIPE, stderr=subprocess.PIPE)
 pyang_out, pyang_err = p1.communicate()
 
-# Only run jtaf-provider if pyang succeeded and produced output
+# Only run jtaf-ansible if pyang succeeded and produced output
 if p1.returncode == 0 and pyang_out:
     p2 = subprocess.Popen([
         'jtaf-ansible',
@@ -56,4 +56,4 @@ if p1.returncode == 0 and pyang_out:
     if error:
         print(error.decode(), file=sys.stdout)
 else:
-    print('pyang failed or produced no output, skipping jtaf-provider.', file=sys.stdout)
+    print('pyang failed or produced no output, skipping jtaf-ansible.', file=sys.stdout)

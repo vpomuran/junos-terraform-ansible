@@ -30,10 +30,10 @@ def main():
     with open(f"{templates_dir}/ansible.j2") as f:
         jinja2_source = f.read()
     tmpl = Template(jinja2_source)
-    resource_config_provider_j2 = '\n'.join(list(filter(lambda x: x.strip() != '',tmpl.render(data=resources).splitlines())))
+    resource_config_ansible_j2 = '\n'.join(list(filter(lambda x: x.strip() != '',tmpl.render(data=resources).splitlines())))
 
     # Step 3: Prepare new output directory based on type
-    new_dir = f"ansible-provider-junos-{args.type}"
+    new_dir = f"ansible-junos-{args.type}"
 
 # create roles/<rolename>/{tasks,templates} structure
     role_name = f"{args.type}_role"
@@ -55,7 +55,7 @@ def main():
 
     # copy rendered main.j2 into the role templates as an example
     with open(os.path.join(templates_path, "template.j2"), "w") as f:
-        f.write(resource_config_provider_j2)
+        f.write(resource_config_ansible_j2)
 
    
    # Step 4: Create a minimal ansible playbook
